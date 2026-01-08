@@ -81,10 +81,10 @@ export default function SwapCard() {
             <div className="flex justify-center -my-3 relative z-10">
               <button
                 onClick={handleSwapTokens}
-                className="w-9 h-9 bg-[#151515] rounded-xl border-[3px] border-[#0a0a0a] flex items-center justify-center hover:bg-[#1f1f1f] group transition-colors shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                className="swap-btn-accent w-9 h-9 bg-[#151515] rounded-xl border-[3px] border-[#0a0a0a] flex items-center justify-center hover:bg-[#1f1f1f] group shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
               >
                 <svg
-                  className="w-4 h-4 text-[#404040] group-hover:text-[#808080] transition-colors"
+                  className="w-4 h-4 text-[#404040] transition-colors"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ export default function SwapCard() {
           </div>
 
           {/* Swap Action Button */}
-          <button className="w-full mt-5 h-12 rounded-xl font-semibold text-sm bg-white text-black hover:bg-[#f0f0f0] transition-colors">
+          <button className="btn-primary-metallic w-full mt-5 h-12 text-sm">
             Swap
           </button>
         </div>

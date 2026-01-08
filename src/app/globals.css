@@ -138,3 +138,226 @@ input[type="number"] {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gray-600);
 }
+
+/* Primary Button - Metallic Pink Gold */
+.btn-primary-metallic {
+  --gold-light: #ffe4d9;
+  --gold-base: #eab0a0;
+  --gold-mid: #d8918a;
+  --gold-deep: #c87878;
+  --gold-dark: #b86868;
+  --gold-shadow: #8b4545;
+  --gold-glow: rgba(234, 176, 160, 0.25);
+  --gold-border-light: rgba(255, 255, 255, 0.45);
+  --gold-border-dark: rgba(139, 69, 69, 0.25);
+
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      175deg,
+      var(--gold-light) 0%,
+      var(--gold-base) 20%,
+      var(--gold-mid) 55%,
+      var(--gold-deep) 80%,
+      var(--gold-dark) 100%
+    );
+
+  /* Refined border - subtle metallic edge */
+  border: 1px solid transparent;
+  border-top-color: var(--gold-border-light);
+  border-left-color: rgba(255, 255, 255, 0.25);
+  border-right-color: var(--gold-border-dark);
+  border-bottom-color: var(--gold-border-dark);
+  border-radius: 14px;
+
+  /* Typography refinements */
+  color: #3d2020;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  text-shadow:
+    0 1px 0 rgba(255, 240, 235, 0.5),
+    0 -0.5px 0 rgba(80, 40, 40, 0.1);
+
+  /* Refined layered shadows - elegant, not overwhelming */
+  box-shadow:
+    /* Soft ambient glow */
+    0 0 24px rgba(234, 176, 160, 0.18),
+    /* Primary elevation */
+    0 4px 8px rgba(139, 69, 69, 0.2),
+    0 8px 20px rgba(139, 69, 69, 0.12),
+    /* Contact shadow for grounding */
+    0 1px 3px rgba(80, 40, 40, 0.25),
+    /* Inner top highlight */
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 2px 3px rgba(255, 245, 240, 0.25),
+    /* Inner bottom definition */
+    inset 0 -1px 0 rgba(80, 40, 40, 0.12);
+
+  /* Smooth transitions */
+  transition:
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reflective shine layer - subtle sweep */
+.btn-primary-metallic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.08) 55%,
+    transparent 60%,
+    transparent 100%
+  );
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Top highlight bar - refined metallic reflection */
+.btn-primary-metallic::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 12%;
+  right: 12%;
+  height: 35%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 250, 248, 0.15) 50%,
+    transparent 100%
+  );
+  border-radius: 8px 8px 50% 50%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Hover state */
+.btn-primary-metallic:hover {
+  transform: translateY(-1px);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  border-left-color: rgba(255, 255, 255, 0.35);
+  box-shadow:
+    /* Slightly enhanced ambient glow */
+    0 0 28px rgba(234, 176, 160, 0.22),
+    /* Lifted elevation */
+    0 6px 12px rgba(139, 69, 69, 0.22),
+    0 12px 28px rgba(139, 69, 69, 0.14),
+    /* Contact shadow */
+    0 2px 4px rgba(80, 40, 40, 0.2),
+    /* Inner highlights enhanced */
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 2px 4px rgba(255, 248, 245, 0.3),
+    inset 0 -1px 0 rgba(80, 40, 40, 0.1);
+  filter: brightness(1.03);
+}
+
+/* Shimmer on hover */
+.btn-primary-metallic:hover::before {
+  left: 100%;
+}
+
+/* Active/pressed state */
+.btn-primary-metallic:active {
+  transform: translateY(0.5px) scale(0.985);
+  border-top-color: rgba(255, 255, 255, 0.3);
+  border-left-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    /* Reduced glow when pressed */
+    0 0 16px rgba(234, 176, 160, 0.15),
+    /* Compressed shadow */
+    0 2px 4px rgba(139, 69, 69, 0.25),
+    0 4px 10px rgba(139, 69, 69, 0.12),
+    /* Deeper inset for pressed feel */
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 2px 4px rgba(80, 40, 40, 0.12),
+    inset 0 -1px 0 rgba(80, 40, 40, 0.08);
+  filter: brightness(0.97);
+  transition-duration: 0.1s;
+}
+
+/* Focus state for accessibility */
+.btn-primary-metallic:focus-visible {
+  outline: 2px solid rgba(234, 176, 160, 0.6);
+  outline-offset: 3px;
+}
+
+/* Accent elements - subtle pink gold touches */
+.accent-gold-glow {
+  box-shadow: 0 0 8px rgba(234, 176, 160, 0.15);
+}
+
+.accent-gold-border {
+  border-color: rgba(216, 145, 138, 0.25);
+}
+
+.accent-gold-border-hover:hover {
+  border-color: rgba(216, 145, 138, 0.35);
+}
+
+/* Status indicator with pink gold */
+.status-indicator-gold {
+  background: linear-gradient(135deg, #eab0a0 0%, #d8918a 100%);
+  box-shadow:
+    0 0 6px rgba(234, 176, 160, 0.4),
+    0 0 2px rgba(234, 176, 160, 0.6);
+}
+
+/* Subtle card accent border */
+.card-accent-border {
+  border-image: linear-gradient(
+    180deg,
+    rgba(216, 145, 138, 0.12) 0%,
+    rgba(24, 24, 24, 1) 30%,
+    rgba(24, 24, 24, 1) 70%,
+    rgba(216, 145, 138, 0.08) 100%
+  ) 1;
+}
+
+/* Swap direction button accent */
+.swap-btn-accent {
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swap-btn-accent:hover {
+  border-color: rgba(216, 145, 138, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 12px rgba(234, 176, 160, 0.1);
+}
+
+.swap-btn-accent:hover svg {
+  color: #d8918a;
+}
+
+/* Nav active state with gold accent */
+.nav-active-gold {
+  position: relative;
+}
+
+.nav-active-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(234, 176, 160, 0.4) 50%,
+    transparent 100%
+  );
+}
