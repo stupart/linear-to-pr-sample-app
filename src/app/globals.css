@@ -361,3 +361,13 @@ input[type="number"] {
     transparent 100%
   );
 }
+
+/* Details panel divider with rose gold accent */
+.divider-gold {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 20, 20, 1) 0%,
+    rgba(216, 145, 138, 0.25) 50%,
+    rgba(20, 20, 20, 1) 100%
+  );
+}
