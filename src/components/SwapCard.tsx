@@ -111,7 +111,7 @@ export default function SwapCard() {
           </div>
 
           {/* Swap Action Button */}
-          <button className="w-full mt-5 h-12 rounded-xl font-semibold text-sm bg-white text-black hover:bg-[#f0f0f0] transition-colors">
+          <button className="block w-full mt-5 h-12 rounded-xl font-semibold text-sm bg-white text-black hover:bg-[#f0f0f0] transition-colors">
             Swap
           </button>
         </div>
