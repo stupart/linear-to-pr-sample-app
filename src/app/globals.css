@@ -21,6 +21,18 @@
   --gray-900: #0f0f0f;
   --gray-950: #0a0a0a;
 
+  /* Hot Pink Design System */
+  --pink-50: #fff0f7;
+  --pink-100: #ffe4f1;
+  --pink-200: #ffcce6;
+  --pink-300: #ffa3d4;
+  --pink-400: #ff6bb8;
+  --pink-500: #ff3399;
+  --pink-600: #ff0080;
+  --pink-700: #e6006e;
+  --pink-800: #bf005c;
+  --pink-900: #99004a;
+
   /* Elevation shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -137,4 +149,254 @@ input[type="number"] {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gray-600);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRIMARY BUTTON - God Tier Glossy Hot Pink Design
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes btn-primary-glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes btn-primary-shimmer {
+  0% {
+    transform: translateX(-100%) rotate(15deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(15deg);
+  }
+}
+
+@keyframes btn-primary-ambient {
+  0%, 100% {
+    filter: blur(20px) brightness(1);
+  }
+  50% {
+    filter: blur(24px) brightness(1.1);
+  }
+}
+
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* Base gradient - rich hot pink with depth */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 40%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #ff4da6 0%,
+      #ff0080 35%,
+      #e6006e 65%,
+      #cc0062 100%
+    );
+
+  /* Multi-layer glow system */
+  box-shadow:
+    /* Outer ambient glow - large, soft, atmospheric */
+    0 0 60px rgba(255, 0, 128, 0.35),
+    0 0 100px rgba(255, 0, 128, 0.2),
+    /* Mid glow - focused color bloom */
+    0 0 30px rgba(255, 51, 153, 0.4),
+    /* Close glow - crisp edge definition */
+    0 0 10px rgba(255, 0, 128, 0.5),
+    /* Bottom reflection glow */
+    0 8px 32px rgba(255, 0, 128, 0.4),
+    0 4px 12px rgba(255, 0, 128, 0.3),
+    /* Inner glow at top edge */
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 2px 4px rgba(255, 200, 230, 0.2),
+    /* Inner shadow at bottom for depth */
+    inset 0 -2px 8px rgba(0, 0, 0, 0.15);
+
+  /* Smooth border with gradient effect */
+  border: 1px solid rgba(255, 150, 200, 0.3);
+  border-top-color: rgba(255, 200, 230, 0.5);
+  border-bottom-color: rgba(180, 0, 90, 0.4);
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    filter 0.2s ease;
+}
+
+/* Glossy highlight overlay - top edge shine */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+
+  /* Isomorphic glass highlight */
+  background:
+    /* Top arc highlight - the signature glossy curve */
+    radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.2) 30%,
+      transparent 70%
+    ),
+    /* Secondary softer highlight underneath */
+    radial-gradient(
+      ellipse 60% 30% at 50% 15%,
+      rgba(255, 200, 230, 0.3) 0%,
+      transparent 100%
+    ),
+    /* Edge highlight left */
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+}
+
+/* Shimmer sweep effect */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  z-index: 2;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.03) 75%,
+    transparent 100%
+  );
+
+  transform: translateX(-100%) rotate(15deg);
+  animation: btn-primary-shimmer 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+/* Hover state - intensified glow */
+.btn-primary:hover {
+  transform: translateY(-1px);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.08) 40%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.08) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #ff66b8 0%,
+      #ff1a8c 35%,
+      #f0007a 65%,
+      #d90070 100%
+    );
+
+  box-shadow:
+    /* Expanded outer glow */
+    0 0 80px rgba(255, 0, 128, 0.5),
+    0 0 120px rgba(255, 0, 128, 0.3),
+    0 0 40px rgba(255, 51, 153, 0.5),
+    0 0 15px rgba(255, 0, 128, 0.6),
+    0 12px 40px rgba(255, 0, 128, 0.5),
+    0 6px 16px rgba(255, 0, 128, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 2px 6px rgba(255, 200, 230, 0.3),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.12);
+
+  border-color: rgba(255, 180, 220, 0.4);
+  border-top-color: rgba(255, 220, 240, 0.6);
+}
+
+/* Active/pressed state */
+.btn-primary:active {
+  transform: translateY(1px) scale(0.98);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.03) 40%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.15) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #ff3399 0%,
+      #e6006e 35%,
+      #cc0062 65%,
+      #b30056 100%
+    );
+
+  box-shadow:
+    0 0 40px rgba(255, 0, 128, 0.3),
+    0 0 60px rgba(255, 0, 128, 0.2),
+    0 0 20px rgba(255, 51, 153, 0.35),
+    0 0 8px rgba(255, 0, 128, 0.4),
+    0 4px 16px rgba(255, 0, 128, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus state for accessibility */
+.btn-primary:focus-visible {
+  outline: 2px solid rgba(255, 102, 178, 0.8);
+  outline-offset: 3px;
+}
+
+/* Ambient glow pseudo-element container */
+.btn-primary-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Background ambient glow layer */
+.btn-primary-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 0, 128, 0.25) 0%,
+    rgba(255, 0, 128, 0.1) 40%,
+    transparent 70%
+  );
+
+  filter: blur(20px);
+  animation: btn-primary-ambient 3s ease-in-out infinite;
 }

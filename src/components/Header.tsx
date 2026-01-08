@@ -41,23 +41,25 @@ export default function Header() {
           </nav>
 
           {/* Connect Button */}
-          <button
-            onClick={() => setIsConnected(!isConnected)}
-            className={`h-8 px-4 rounded-xl text-xs font-semibold transition-all ${
-              isConnected
-                ? "bg-[#141414] text-[#909090] border border-[#252525] hover:border-[#353535] hover:text-[#b0b0b0]"
-                : "bg-white text-black hover:bg-[#f0f0f0]"
-            }`}
-          >
-            {isConnected ? (
-              <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#505050]" />
-                <span className="font-mono text-[11px] tracking-tight">0x12...5678</span>
-              </span>
-            ) : (
-              "Connect"
-            )}
-          </button>
+          <div className={isConnected ? "" : "btn-primary-wrapper"}>
+            <button
+              onClick={() => setIsConnected(!isConnected)}
+              className={`h-8 px-4 rounded-xl text-xs transition-all ${
+                isConnected
+                  ? "bg-[#141414] text-[#909090] border border-[#252525] hover:border-[#353535] hover:text-[#b0b0b0] font-semibold"
+                  : "btn-primary"
+              }`}
+            >
+              {isConnected ? (
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#505050]" />
+                  <span className="font-mono text-[11px] tracking-tight">0x12...5678</span>
+                </span>
+              ) : (
+                "Connect"
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </header>
