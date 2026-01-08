@@ -125,7 +125,7 @@ export default function SwapCard() {
             1 {fromToken.symbol} = 2,000 {toToken.symbol}
           </span>
         </div>
-        <div className="w-full h-px bg-[#141414] my-2.5" />
+        <div className="w-full h-px divider-gold my-2.5" />
         <div className="flex justify-between items-center">
           <span className="text-[11px] text-[#404040]">Network Fee</span>
           <span className="text-[11px] text-[#707070] font-medium font-mono">
