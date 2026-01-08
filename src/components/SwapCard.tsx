@@ -34,14 +34,14 @@ export default function SwapCard() {
   };
 
   return (
-    <div className="w-full max-w-[400px]">
-      <div className="bg-neutral-900/90 backdrop-blur-sm rounded-3xl border border-neutral-800/80 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+    <div className="w-full max-w-[420px] px-4">
+      <div className="bg-[#0c0c0c] rounded-[24px] border border-[#1a1a1a] shadow-[0_8px_40px_rgba(0,0,0,0.6),0_2px_8px_rgba(0,0,0,0.4)]">
         <div className="p-5">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Swap</h2>
-            <button className="p-2 -mr-2 rounded-xl hover:bg-neutral-800/80 group transition-colors">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-[11px] font-semibold text-[#606060] uppercase tracking-[0.08em]">Swap</h2>
+            <button className="w-8 h-8 -mr-1 rounded-lg flex items-center justify-center hover:bg-[#1a1a1a] group">
               <svg
-                className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors"
+                className="w-[18px] h-[18px] text-[#505050] group-hover:text-[#808080]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ export default function SwapCard() {
             </button>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             <TokenInput
               label="You pay"
               token={fromToken}
@@ -72,13 +72,13 @@ export default function SwapCard() {
               onTokenSelect={setFromToken}
             />
 
-            <div className="flex justify-center -my-4 relative z-10">
+            <div className="flex justify-center -my-3.5 relative z-10">
               <button
                 onClick={handleSwapTokens}
-                className="p-2.5 bg-neutral-800 rounded-xl border-4 border-neutral-900 hover:bg-neutral-700 hover:border-neutral-800 group transition-all shadow-lg"
+                className="w-9 h-9 bg-[#181818] rounded-xl border-[3px] border-[#0c0c0c] flex items-center justify-center hover:bg-[#222222] group shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
               >
                 <svg
-                  className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors"
+                  className="w-4 h-4 text-[#505050] group-hover:text-[#909090]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -104,27 +104,27 @@ export default function SwapCard() {
             />
           </div>
 
-          <button className="w-full mt-5 h-11 rounded-xl font-semibold text-sm bg-white text-black hover:bg-neutral-100 shadow-md hover:shadow-lg transition-all">
+          <button className="w-full mt-5 h-12 rounded-xl font-semibold text-[14px] bg-white text-black hover:bg-[#f5f5f5] shadow-[0_2px_12px_rgba(255,255,255,0.1),0_1px_3px_rgba(0,0,0,0.2)]">
             Swap
           </button>
         </div>
       </div>
 
-      <div className="mt-4 mx-1 p-3.5 rounded-2xl bg-neutral-900/50 border border-neutral-800/50 space-y-2.5">
+      <div className="mt-3 mx-0.5 px-4 py-3 rounded-xl bg-[#0a0a0a] border border-[#151515]">
         <div className="flex justify-between items-center">
-          <span className="text-xs text-neutral-500">Rate</span>
-          <span className="text-xs text-neutral-300 font-medium font-mono">
+          <span className="text-[11px] text-[#505050]">Rate</span>
+          <span className="text-[11px] text-[#808080] font-medium font-mono">
             1 {fromToken.symbol} = 2,000 {toToken.symbol}
           </span>
         </div>
-        <div className="w-full h-px bg-neutral-800/50" />
+        <div className="w-full h-px bg-[#181818] my-2.5" />
         <div className="flex justify-between items-center">
-          <span className="text-xs text-neutral-500">Network Fee</span>
-          <span className="text-xs text-neutral-300 font-medium font-mono">~$2.50</span>
+          <span className="text-[11px] text-[#505050]">Network Fee</span>
+          <span className="text-[11px] text-[#808080] font-medium font-mono">~$2.50</span>
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-xs text-neutral-500">Slippage</span>
-          <span className="text-xs text-neutral-300 font-medium">0.5%</span>
+        <div className="flex justify-between items-center mt-1.5">
+          <span className="text-[11px] text-[#505050]">Slippage</span>
+          <span className="text-[11px] text-[#808080] font-medium">0.5%</span>
         </div>
       </div>
     </div>
