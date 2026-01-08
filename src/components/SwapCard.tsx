@@ -110,7 +110,7 @@ export default function SwapCard() {
             />
           </div>
 
-          {/* Swap Action Button */}
+          {/* Swap Action Button - Rose gold metallic gradient */}
           <button className="btn-primary-metallic w-full mt-5 h-12 text-sm">
             Swap
           </button>
