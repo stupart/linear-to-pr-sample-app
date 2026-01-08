@@ -78,7 +78,7 @@ export default function SwapCard() {
             />
 
             {/* Swap Button */}
-            <div className="flex justify-center -my-3 relative z-10">
+            <div className="w-full flex justify-center -my-3 relative z-10">
               <button
                 onClick={handleSwapTokens}
                 className="w-9 h-9 bg-[#151515] rounded-xl border-[3px] border-[#0a0a0a] flex items-center justify-center hover:bg-[#1f1f1f] group transition-colors shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
