@@ -1,23 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  /* Grayscale Design System - Dark mode optimized */
-  --background: #09090b;
-  --foreground: #fafafa;
+  /* Grayscale Design System */
+  --background: #000000;
+  --foreground: #ffffff;
 
-  /* Refined neutral palette */
-  --neutral-50: #fafafa;
-  --neutral-100: #f4f4f5;
-  --neutral-200: #e4e4e7;
-  --neutral-300: #d4d4d8;
-  --neutral-400: #a1a1aa;
-  --neutral-500: #71717a;
-  --neutral-600: #52525b;
-  --neutral-700: #3f3f46;
-  --neutral-800: #27272a;
-  --neutral-850: #1f1f23;
-  --neutral-900: #18181b;
-  --neutral-950: #09090b;
+  /* Refined grayscale palette */
+  --gray-50: #ffffff;
+  --gray-100: #fafafa;
+  --gray-150: #f0f0f0;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-750: #2e2e2e;
+  --gray-800: #1f1f1f;
+  --gray-850: #171717;
+  --gray-900: #0f0f0f;
+  --gray-950: #0a0a0a;
+
+  /* Elevation shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.35);
+
+  /* Inset shadows for depth */
+  --shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-inset-lg: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* Border radius system */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 22px;
+
+  /* Spacing rhythm */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
 }
 
 @theme inline {
@@ -42,31 +70,43 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
-  letter-spacing: -0.011em;
+  letter-spacing: -0.02em;
 }
 
 /* Smooth transitions for interactive elements */
-button, a, input {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+button, a, input, select {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Transform transitions for buttons */
+button {
+  transform-origin: center;
+  will-change: transform, background-color, border-color;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+  transition-duration: 0.1s;
 }
 
 /* Focus states for accessibility */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  outline: 2px solid var(--neutral-500);
+  outline: 1px solid var(--gray-400);
   outline-offset: 2px;
 }
 
 /* Selection styling */
 ::selection {
-  background: var(--neutral-700);
-  color: var(--neutral-100);
+  background: var(--gray-200);
+  color: var(--gray-900);
 }
 
 /* Subtle text rendering improvements */
 h1, h2, h3, h4, h5, h6 {
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
+  font-weight: 500;
 }
 
 /* Number inputs - hide spinner */
@@ -78,4 +118,23 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-700);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-600);
 }
