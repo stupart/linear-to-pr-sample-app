@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface Token {
   symbol: string;
@@ -29,14 +29,30 @@ export default function TokenInput({
   readOnly = false,
 }: TokenInputProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <div className="bg-slate-700/50 rounded-2xl p-4">
+    <div className="bg-zinc-800/50 rounded-2xl p-4 border border-zinc-800 hover:border-zinc-700/50 transition-colors">
       <div className="flex justify-between mb-2">
-        <span className="text-sm text-slate-400">{label}</span>
-        <span className="text-sm text-slate-400">
-          Balance: {token.balance.toLocaleString()} {token.symbol}
+        <span className="text-xs font-medium text-zinc-500">
+          {label}
         </span>
+        <button
+          className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          onClick={() => !readOnly && onAmountChange(token.balance.toString())}
+        >
+          Balance: <span className="text-zinc-400">{token.balance.toLocaleString()}</span>
+        </button>
       </div>
 
       <div className="flex items-center gap-3">
@@ -44,22 +60,28 @@ export default function TokenInput({
           type="text"
           value={amount}
           onChange={(e) => onAmountChange(e.target.value)}
-          placeholder="0.0"
+          placeholder="0"
           readOnly={readOnly}
-          className="flex-1 bg-transparent text-3xl font-medium text-white placeholder-slate-500 outline-none"
+          className={`flex-1 bg-transparent text-3xl font-semibold text-white placeholder-zinc-700 outline-none w-0 min-w-0 ${
+            readOnly ? "cursor-default" : ""
+          }`}
         />
 
-        <div className="relative">
+        <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2 px-3 py-2 bg-slate-600 hover:bg-slate-500 rounded-xl transition-colors"
+            className="flex items-center gap-2.5 pl-2 pr-3 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl transition-colors border border-zinc-700/50 hover:border-zinc-600"
           >
-            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-xs font-bold text-white">
+            <div className="w-7 h-7 rounded-full bg-zinc-600 flex items-center justify-center text-xs font-bold text-white">
               {token.icon}
             </div>
-            <span className="text-white font-medium">{token.symbol}</span>
+            <span className="text-white font-semibold text-sm">
+              {token.symbol}
+            </span>
             <svg
-              className="w-4 h-4 text-slate-400"
+              className={`w-4 h-4 text-zinc-500 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              }`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -74,41 +96,62 @@ export default function TokenInput({
           </button>
 
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-slate-700 rounded-xl shadow-lg border border-slate-600 overflow-hidden z-20">
-              {tokens.map((t) => (
-                <button
-                  key={t.symbol}
-                  onClick={() => {
-                    onTokenSelect(t);
-                    setIsOpen(false);
-                  }}
-                  className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-600 transition-colors"
-                >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-sm font-bold text-white">
-                    {t.icon}
-                  </div>
-                  <div className="text-left">
-                    <div className="text-white font-medium">{t.symbol}</div>
-                    <div className="text-xs text-slate-400">{t.name}</div>
-                  </div>
-                </button>
-              ))}
+            <div className="absolute right-0 mt-2 w-56 bg-zinc-900 rounded-2xl shadow-2xl shadow-black/60 border border-zinc-800 overflow-hidden z-20">
+              <div className="p-2">
+                {tokens.map((t) => (
+                  <button
+                    key={t.symbol}
+                    onClick={() => {
+                      onTokenSelect(t);
+                      setIsOpen(false);
+                    }}
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${
+                      t.symbol === token.symbol
+                        ? "bg-zinc-800"
+                        : "hover:bg-zinc-800/50"
+                    }`}
+                  >
+                    <div className="w-9 h-9 rounded-full bg-zinc-700 flex items-center justify-center text-sm font-bold text-white">
+                      {t.icon}
+                    </div>
+                    <div className="text-left flex-1">
+                      <div className="text-white font-semibold text-sm">
+                        {t.symbol}
+                      </div>
+                      <div className="text-xs text-zinc-500">{t.name}</div>
+                    </div>
+                    {t.symbol === token.symbol && (
+                      <svg
+                        className="w-5 h-5 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>
       </div>
 
       {!readOnly && (
-        <div className="flex gap-2 mt-3">
+        <div className="flex gap-1.5 mt-3">
           {[25, 50, 75, 100].map((pct) => (
             <button
               key={pct}
               onClick={() =>
                 onAmountChange(((token.balance * pct) / 100).toString())
               }
-              className="px-3 py-1 text-xs font-medium text-slate-400 bg-slate-600/50 hover:bg-slate-600 rounded-lg transition-colors"
+              className="px-3 py-1.5 text-xs font-medium text-zinc-500 bg-zinc-800/50 hover:bg-zinc-700 hover:text-zinc-200 rounded-lg transition-colors border border-transparent hover:border-zinc-700"
             >
-              {pct}%
+              {pct === 100 ? "Max" : `${pct}%`}
             </button>
           ))}
         </div>
