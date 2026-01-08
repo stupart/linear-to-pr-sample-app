@@ -101,7 +101,7 @@ export default function SwapCard() {
         readOnly
       />
 
-      <button className="w-full mt-4 py-4 rounded-2xl font-semibold text-lg transition-all bg-pink-500 hover:bg-pink-600 text-white">
+      <button className="w-full mt-4 py-4 rounded-2xl font-semibold text-lg transition-all bg-green-500 hover:bg-green-600 text-white">
         Swap
       </button>
 
