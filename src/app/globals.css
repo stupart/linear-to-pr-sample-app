@@ -52,10 +52,15 @@ button, a, input {
 
 /* Focus states for accessibility */
 button:focus-visible,
-a:focus-visible,
-input:focus-visible {
+a:focus-visible {
   outline: 2px solid var(--neutral-500);
   outline-offset: 2px;
+}
+
+/* Input focus - subtle ring that matches the dark theme */
+input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--neutral-600), 0 0 0 3px rgba(113, 113, 122, 0.15);
 }
 
 /* Selection styling */
