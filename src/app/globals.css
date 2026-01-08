@@ -292,3 +292,72 @@ input[type="number"] {
   outline: 2px solid rgba(234, 176, 160, 0.6);
   outline-offset: 3px;
 }
+
+/* Accent elements - subtle pink gold touches */
+.accent-gold-glow {
+  box-shadow: 0 0 8px rgba(234, 176, 160, 0.15);
+}
+
+.accent-gold-border {
+  border-color: rgba(216, 145, 138, 0.25);
+}
+
+.accent-gold-border-hover:hover {
+  border-color: rgba(216, 145, 138, 0.35);
+}
+
+/* Status indicator with pink gold */
+.status-indicator-gold {
+  background: linear-gradient(135deg, #eab0a0 0%, #d8918a 100%);
+  box-shadow:
+    0 0 6px rgba(234, 176, 160, 0.4),
+    0 0 2px rgba(234, 176, 160, 0.6);
+}
+
+/* Subtle card accent border */
+.card-accent-border {
+  border-image: linear-gradient(
+    180deg,
+    rgba(216, 145, 138, 0.12) 0%,
+    rgba(24, 24, 24, 1) 30%,
+    rgba(24, 24, 24, 1) 70%,
+    rgba(216, 145, 138, 0.08) 100%
+  ) 1;
+}
+
+/* Swap direction button accent */
+.swap-btn-accent {
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swap-btn-accent:hover {
+  border-color: rgba(216, 145, 138, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 12px rgba(234, 176, 160, 0.1);
+}
+
+.swap-btn-accent:hover svg {
+  color: #d8918a;
+}
+
+/* Nav active state with gold accent */
+.nav-active-gold {
+  position: relative;
+}
+
+.nav-active-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(234, 176, 160, 0.4) 50%,
+    transparent 100%
+  );
+}

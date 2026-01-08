@@ -31,7 +31,7 @@ export default function Header() {
                 href="#"
                 className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                   item.active
-                    ? "text-white bg-[#252525]"
+                    ? "text-white bg-[#252525] nav-active-gold"
                     : "text-[#606060] hover:text-[#909090] hover:bg-[#1a1a1a]"
                 }`}
               >
@@ -51,7 +51,7 @@ export default function Header() {
           >
             {isConnected ? (
               <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#505050]" />
+                <span className="w-1.5 h-1.5 rounded-full status-indicator-gold" />
                 <span className="font-mono text-[11px] tracking-tight">0x12...5678</span>
               </span>
             ) : (
