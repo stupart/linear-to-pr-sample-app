@@ -34,14 +34,14 @@ export default function SwapCard() {
   };
 
   return (
-    <div className="w-full max-w-[440px]">
-      <div className="bg-zinc-900 rounded-3xl p-1.5 shadow-2xl shadow-black/60 border border-zinc-800/50">
-        <div className="bg-zinc-900 rounded-2xl p-5">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-medium text-zinc-400">Swap</h2>
-            <button className="p-2 -mr-2 rounded-xl hover:bg-zinc-800 transition-colors group">
+    <div className="w-full max-w-[400px]">
+      <div className="bg-neutral-900/90 backdrop-blur-sm rounded-3xl border border-neutral-800/80 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+        <div className="p-5">
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Swap</h2>
+            <button className="p-2 -mr-2 rounded-xl hover:bg-neutral-800/80 group transition-colors">
               <svg
-                className="w-5 h-5 text-zinc-500 group-hover:text-zinc-300"
+                className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -75,10 +75,10 @@ export default function SwapCard() {
             <div className="flex justify-center -my-4 relative z-10">
               <button
                 onClick={handleSwapTokens}
-                className="p-2.5 bg-zinc-800 rounded-xl border-4 border-zinc-900 hover:bg-zinc-700 active:scale-95 transition-all group shadow-lg"
+                className="p-2.5 bg-neutral-800 rounded-xl border-4 border-neutral-900 hover:bg-neutral-700 hover:border-neutral-800 group transition-all shadow-lg"
               >
                 <svg
-                  className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors"
+                  className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -104,26 +104,27 @@ export default function SwapCard() {
             />
           </div>
 
-          <button className="w-full mt-5 py-4 rounded-2xl font-semibold text-sm transition-all bg-white text-zinc-900 hover:bg-zinc-100 active:scale-[0.98] shadow-sm">
+          <button className="w-full mt-5 h-11 rounded-xl font-semibold text-sm bg-white text-black hover:bg-neutral-100 shadow-md hover:shadow-lg transition-all">
             Swap
           </button>
         </div>
       </div>
 
-      <div className="mt-4 px-3 space-y-2.5">
-        <div className="flex justify-between text-sm">
-          <span className="text-zinc-500">Rate</span>
-          <span className="text-zinc-300 font-medium">
+      <div className="mt-4 mx-1 p-3.5 rounded-2xl bg-neutral-900/50 border border-neutral-800/50 space-y-2.5">
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-neutral-500">Rate</span>
+          <span className="text-xs text-neutral-300 font-medium font-mono">
             1 {fromToken.symbol} = 2,000 {toToken.symbol}
           </span>
         </div>
-        <div className="flex justify-between text-sm">
-          <span className="text-zinc-500">Network Fee</span>
-          <span className="text-zinc-300 font-medium">~$2.50</span>
+        <div className="w-full h-px bg-neutral-800/50" />
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-neutral-500">Network Fee</span>
+          <span className="text-xs text-neutral-300 font-medium font-mono">~$2.50</span>
         </div>
-        <div className="flex justify-between text-sm">
-          <span className="text-zinc-500">Slippage</span>
-          <span className="text-zinc-300 font-medium">0.5%</span>
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-neutral-500">Slippage</span>
+          <span className="text-xs text-neutral-300 font-medium">0.5%</span>
         </div>
       </div>
     </div>

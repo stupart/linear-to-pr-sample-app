@@ -42,16 +42,16 @@ export default function TokenInput({
   }, []);
 
   return (
-    <div className="bg-zinc-800/50 rounded-2xl p-4 border border-zinc-800 hover:border-zinc-700/50 transition-colors">
-      <div className="flex justify-between mb-2">
-        <span className="text-xs font-medium text-zinc-500">
+    <div className="bg-neutral-800/50 rounded-2xl p-4 border border-neutral-800/80 hover:border-neutral-700/80 transition-colors">
+      <div className="flex justify-between items-center mb-3">
+        <span className="text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">
           {label}
         </span>
         <button
-          className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          className="text-[11px] text-neutral-500 hover:text-neutral-300 transition-colors"
           onClick={() => !readOnly && onAmountChange(token.balance.toString())}
         >
-          Balance: <span className="text-zinc-400">{token.balance.toLocaleString()}</span>
+          Balance: <span className="text-neutral-400 font-medium">{token.balance.toLocaleString()}</span>
         </button>
       </div>
 
@@ -60,9 +60,9 @@ export default function TokenInput({
           type="text"
           value={amount}
           onChange={(e) => onAmountChange(e.target.value)}
-          placeholder="0"
+          placeholder="0.00"
           readOnly={readOnly}
-          className={`flex-1 bg-transparent text-3xl font-semibold text-white placeholder-zinc-700 outline-none w-0 min-w-0 ${
+          className={`flex-1 bg-transparent text-2xl font-semibold text-white placeholder-neutral-600 outline-none w-0 min-w-0 font-mono tracking-tight ${
             readOnly ? "cursor-default" : ""
           }`}
         />
@@ -70,16 +70,16 @@ export default function TokenInput({
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-2.5 pl-2 pr-3 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-xl transition-colors border border-zinc-700/50 hover:border-zinc-600"
+            className="flex items-center gap-2 pl-2 pr-2.5 py-2 bg-neutral-700/60 hover:bg-neutral-700 rounded-xl border border-neutral-600/50 hover:border-neutral-500/50 transition-all"
           >
-            <div className="w-7 h-7 rounded-full bg-zinc-600 flex items-center justify-center text-xs font-bold text-white">
+            <div className="w-6 h-6 rounded-full bg-neutral-500 flex items-center justify-center text-xs font-bold text-white shadow-inner">
               {token.icon}
             </div>
             <span className="text-white font-semibold text-sm">
               {token.symbol}
             </span>
             <svg
-              className={`w-4 h-4 text-zinc-500 transition-transform duration-200 ${
+              className={`w-3.5 h-3.5 text-neutral-400 transition-transform duration-200 ${
                 isOpen ? "rotate-180" : ""
               }`}
               fill="none"
@@ -96,7 +96,7 @@ export default function TokenInput({
           </button>
 
           {isOpen && (
-            <div className="absolute right-0 mt-2 w-56 bg-zinc-900 rounded-2xl shadow-2xl shadow-black/60 border border-zinc-800 overflow-hidden z-20">
+            <div className="absolute right-0 mt-2 w-56 bg-neutral-900 rounded-2xl border border-neutral-800 overflow-hidden z-20 shadow-2xl shadow-black/60">
               <div className="p-2">
                 {tokens.map((t) => (
                   <button
@@ -107,22 +107,22 @@ export default function TokenInput({
                     }}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${
                       t.symbol === token.symbol
-                        ? "bg-zinc-800"
-                        : "hover:bg-zinc-800/50"
+                        ? "bg-neutral-800"
+                        : "hover:bg-neutral-800/60"
                     }`}
                   >
-                    <div className="w-9 h-9 rounded-full bg-zinc-700 flex items-center justify-center text-sm font-bold text-white">
+                    <div className="w-9 h-9 rounded-full bg-neutral-700 flex items-center justify-center text-sm font-bold text-white shadow-inner">
                       {t.icon}
                     </div>
                     <div className="text-left flex-1">
                       <div className="text-white font-semibold text-sm">
                         {t.symbol}
                       </div>
-                      <div className="text-xs text-zinc-500">{t.name}</div>
+                      <div className="text-[11px] text-neutral-500">{t.name}</div>
                     </div>
                     {t.symbol === token.symbol && (
                       <svg
-                        className="w-5 h-5 text-white"
+                        className="w-4 h-4 text-white"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -142,14 +142,14 @@ export default function TokenInput({
       </div>
 
       {!readOnly && (
-        <div className="flex gap-1.5 mt-3">
+        <div className="flex gap-1.5 mt-3.5">
           {[25, 50, 75, 100].map((pct) => (
             <button
               key={pct}
               onClick={() =>
                 onAmountChange(((token.balance * pct) / 100).toString())
               }
-              className="px-3 py-1.5 text-xs font-medium text-zinc-500 bg-zinc-800/50 hover:bg-zinc-700 hover:text-zinc-200 rounded-lg transition-colors border border-transparent hover:border-zinc-700"
+              className="px-2.5 py-1.5 text-[11px] font-semibold text-neutral-500 bg-neutral-800/40 hover:bg-neutral-700/80 hover:text-neutral-200 rounded-lg transition-all"
             >
               {pct === 100 ? "Max" : `${pct}%`}
             </button>
