@@ -6,7 +6,7 @@ export default function Header() {
   const [isConnected, setIsConnected] = useState(false);
 
   return (
-    <header className="flex items-center justify-between px-6 py-4 bg-slate-900/50 backdrop-blur-sm border-b border-slate-700">
+    <header className="flex items-center justify-between px-6 py-4 bg-[#1e3a5f] backdrop-blur-sm border-b border-slate-700">
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 to-purple-500" />
         <span className="text-xl font-bold text-white">CryptoSwap</span>
